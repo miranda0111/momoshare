@@ -162,6 +162,7 @@
 		$.get(url, async (err, resp, data) => {
 			try {
 				data = data;
+                console.log(data);
 				$.log(`\n【网抑云时间】: ${data}`);
 
 			} catch (e) {
