@@ -7,7 +7,6 @@
  * 
  * 
  */
- const request = require('request');
  const $ = new Env("墨墨背单词share");
  const notify = $.isNode() ? require('./sendNotify') : '';
  const Notify = 1; //0为关闭通知，1为打开通知,默认为1
