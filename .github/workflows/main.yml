@@ -1,0 +1,25 @@
+name: 抽奖
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 */5 * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: '运行'
+        run: |
+          node momo.js
+        env:
+          mmShareLink: ${{ secrets.mmShareLink }}
