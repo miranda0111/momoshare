@@ -32,4 +32,4 @@ jobs:
         run: |
           node momo.js
         env:
-          mmShareLink: ${{ secrets.MMSL }}
+          MMSL: ${{ secrets.MMSL }}
