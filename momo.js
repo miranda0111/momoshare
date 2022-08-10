@@ -162,9 +162,10 @@
 		$.get(url, async (err, resp, data) => {
 			try {
 				data = data;
-                console.log(data);
-				$.log(`\n【网抑云时间】: ${data}`);
-
+                // console.log(data);
+				// $.log(`\n【网抑云时间】: ${data}`);
+                sum = data.match(/(?<=增加了)(.+?)(?=个单词)/)[0];
+                console.log(sum);
 			} catch (e) {
 				$.logErr(e, resp);
 			} finally {
