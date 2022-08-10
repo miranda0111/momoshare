@@ -1,4 +1,4 @@
-name: 抽奖
+name: 分享点击
 on:
   push:
     branches:
