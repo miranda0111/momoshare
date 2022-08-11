@@ -55,7 +55,7 @@
              if (debug) {
                  console.log(`\n【debug】 这是你第 ${num}`);
              }
-             UA = ua();
+             UA = require('./USER_AGENTS').USER_AGENT;
              await $.wait(2 * 1000);
              if (debug) {
                 console.log(`\n【debug】 这是你的UA数据:\n ${UA}\n`);
@@ -113,15 +113,15 @@
  }
  
  //随机UA
- async function ua(){
-    if ($.isNode()) {
-        var USER_AGENT = require('./USER_AGENTS').USER_AGENT;
-        if (debug) {
-            console.log(`\n【debug】 这是你的UA1数据:\n ${USER_AGENT}\n`);
-         }
-        return USER_AGENT;
-    }
- }
+//  async function ua(){
+//     if ($.isNode()) {
+//         let USER_AGENT = require('./USER_AGENTS').USER_AGENT;
+//         if (debug) {
+//             console.log(`\n【debug】 这是你的UA1数据:\n ${USER_AGENT}\n`);
+//          }
+//         return USER_AGENT;
+//     }
+//  }
 
  //每日网抑云
  function wyy(timeout = 3 * 1000) {
