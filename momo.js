@@ -148,8 +148,8 @@
 				data = data;
                 // console.log(data);
 				// $.log(`\n【网抑云时间】: ${data}`);
-                sum = data.match(/(?<=增加了)(.+?)(?=个单词)/)[0];
-                namedata = data.match(/(?<=alt=")\S*(?="\/)/)[0];
+                let sum = data.match(/(?<=增加了)(.+?)(?=个单词)/)[0];
+                let namedata = data.match(/(?<=alt=")\S*(?="\/)/)[0];
                 console.log(`用户${namedata}单词数增加到${sum}`);
                 msg += `\n 用户${namedata}单词数增加到${sum}`
 			} catch (e) {
