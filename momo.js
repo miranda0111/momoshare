@@ -65,7 +65,7 @@
  
              $.log('开始 【点击分享链接】')
              await addLike()
-             await $.wait(30 * 1000);
+             await $.wait(5 * 1000);
  
  
          }
@@ -144,7 +144,7 @@
               }
 		}
         if (debug) {
-            console.log(`\n【debug】 这是你的url数据:\n ${url}\n`);
+            console.log(`\n【debug】 这是你的url数据:\n ${url.url}\n`);
          }
 		$.get(url, async (err, resp, data) => {
 			try {
