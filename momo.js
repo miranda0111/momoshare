@@ -156,7 +156,7 @@
 			url: MMSL,
             headers: {
                 'Host': 'www.maimemo.com',
-                'user-agent': `Mozilla/5.0 (Linux; Android 9; PAR-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Mobile Safari/537.36`
+                'user-agent': `Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.026; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/045131 Mobile Safari/537.36`
               }
 		}
 		$.get(url, async (err, resp, data) => {
