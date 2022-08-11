@@ -148,7 +148,7 @@
 			url: MMSL,
             headers: {
                 'Host': 'www.maimemo.com',
-                'user-agent': UA
+                // 'user-agent': UA
               }
 		}
 		$.get(url, async (err, resp, data) => {
