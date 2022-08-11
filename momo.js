@@ -10,7 +10,7 @@
  const $ = new Env("墨墨背单词share");
  const notify = $.isNode() ? require('./sendNotify') : '';
  const Notify = 1; //0为关闭通知，1为打开通知,默认为1
- const debug = 1; //0为关闭调试，1为打开调试,默认为0
+ const debug = 0; //0为关闭调试，1为打开调试,默认为0
 
  
  let MMSL = ($.isNode() ? process.env.MMSL : $.getdata('MMSL')) || "";
@@ -51,7 +51,7 @@
              let num = index + 1
              $.log(`\n========= 开始【第 ${num} 个账号】=========\n`)
              msg += `\n【第 ${num} 个账号】`
-
+             MMSL = MMSLArr[index];   
              if (debug) {
                  console.log(`\n【debug】 这是你第 ${num}`);
              }
@@ -123,7 +123,7 @@
              try {
                  data = JSON.parse(data)
                  $.log(`\n【网抑云时间】: ${data.content}  by--${data.music}`);
- 
+                 msg += `\n【网抑云时间】: ${data.content}  by--${data.music}`;
              } catch (e) {
                  $.logErr(e, resp);
              } finally {
