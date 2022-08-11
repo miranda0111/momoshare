@@ -10,7 +10,7 @@
  const $ = new Env("墨墨背单词share");
  const notify = $.isNode() ? require('./sendNotify') : '';
  const Notify = 1; //0为关闭通知，1为打开通知,默认为1
- const debug = 0; //0为关闭调试，1为打开调试,默认为0
+ const debug = 1; //0为关闭调试，1为打开调试,默认为0
  
  
  let MMSL = ($.isNode() ? process.env.MMSL : $.getdata('MMSL')) || "";
@@ -35,17 +35,14 @@
  
          await wyy();
          await $.wait(2 * 1000);
+         
  
  
          $.log(`\n=================== 共找到 ${MMSLArr.length} 个账号 ===================`)
  
          if (debug) {
              console.log(`【debug】 这是你的账号数组:\n ${MMSLArr}`);
-         }
- 
-         if (debug) {
-             console.log(`\n【debug】 这是你的UA数据:\n ${UA}\n`);
-         }
+         }      
  
          for (let index = 0; index < MMSLArr.length; index++) {
  
@@ -53,15 +50,20 @@
              let num = index + 1
              $.log(`\n========= 开始【第 ${num} 个账号】=========\n`)
              msg += `\n【第 ${num} 个账号】`
-             let user_id = MMSLArr[index]
+
              if (debug) {
-                 console.log(`\n【debug】 这是你第 ${num} 账号信息:\n user_id:${user_id}\n`);
+                 console.log(`\n【debug】 这是你第 ${num}`);
+             }
+             await ua();
+             await $.wait(2 * 1000);
+             if (debug) {
+                console.log(`\n【debug】 这是你的UA数据:\n ${UA}\n`);
              }
  
  
-             $.log('开始 【点赞笑点】')
-             await addLikeRec()
-             await $.wait(2 * 1000);
+             $.log('开始 【点击分享链接】')
+             await addLike()
+             await $.wait(30 * 1000);
  
  
          }
@@ -109,26 +111,13 @@
      }
  }
  
- /**
-  * 随机数生成
-  */
- function randomString(e) {
-     e = e || 32;
-     var t = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890",
-         a = t.length,
-         n = "";
-     for (i = 0; i < e; i++)
-         n += t.charAt(Math.floor(Math.random() * a));
-     return n
+ //随机UA
+ async function ua(){
+    if ($.isNode()) {
+        var UA = require('./USER_AGENTS').USER_AGENT;
+    }
  }
- 
- /**
-  * 随机整数生成
-  */
- function randomInt(min, max) {
-     return Math.round(Math.random() * (max - min) + min)
- }
- 
+
  //每日网抑云
  function wyy(timeout = 3 * 1000) {
      return new Promise((resolve) => {
@@ -150,13 +139,13 @@
  }
  
  //#endregion
- async function addLikeRec(timeout = 3 * 1000) {
+ async function addLike(timeout = 3 * 1000) {
 	return new Promise((resolve) => {
 		let url = {
 			url: MMSL,
             headers: {
                 'Host': 'www.maimemo.com',
-                'user-agent': `Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1`
+                'user-agent': UA
               }
 		}
 		$.get(url, async (err, resp, data) => {
