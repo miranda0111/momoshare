@@ -80,8 +80,8 @@
  // ============================================变量检查============================================ \\
  async function Envs() {
      if (MMSL) {
-         if (MMSL.indexOf("@") != -1) {
-             MMSL.split("@").forEach((item) => {
+         if (MMSL.indexOf("\n") != -1) {
+             MMSL.split("\n").forEach((item) => {
                  MMSLArr.push(item);
              });
          } else {
