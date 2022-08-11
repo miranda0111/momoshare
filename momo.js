@@ -143,6 +143,9 @@
                 'user-agent': UA
               }
 		}
+        if (debug) {
+            console.log(`\n【debug】 这是你的url数据:\n ${url}\n`);
+         }
 		$.get(url, async (err, resp, data) => {
 			try {
 				data = data;
