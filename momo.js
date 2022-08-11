@@ -85,6 +85,10 @@
              MMSL.split("@").forEach((item) => {
                  MMSLArr.push(item);
              });
+         } else if (MMSL.indexOf("\n") != -1) {
+            MMSL.split("\n").forEach((item) => {
+                 MMSLArr.push(item);
+             });
          } else {
              MMSLArr.push(MMSL);
          }
