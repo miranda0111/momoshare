@@ -54,7 +54,7 @@
              if (debug) {
                  console.log(`\n【debug】 这是你第 ${num}`);
              }
-             await ua();
+            //  await ua();
              await $.wait(2 * 1000);
              if (debug) {
                 console.log(`\n【debug】 这是你的UA数据:\n ${UA}\n`);
