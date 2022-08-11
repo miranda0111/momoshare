@@ -81,8 +81,8 @@
  // ============================================变量检查============================================ \\
  async function Envs() {
      if (MMSL) {
-         if (MMSL.indexOf("\n") != -1) {
-             MMSL.split("\n").forEach((item) => {
+         if (MMSL.indexOf("@") != -1) {
+             MMSL.split("@").forEach((item) => {
                  MMSLArr.push(item);
              });
          } else {
@@ -147,6 +147,9 @@
 			try {
 				data = data;
                 // console.log(data);
+                if (debug) {
+                    console.log(`\n【debug】 这是你的data数据:\n ${data}\n`);
+                 }
 				// $.log(`\n【网抑云时间】: ${data}`);
                 let sum = data.match(/(?<=增加了)(.+?)(?=个单词)/)[0];
                 let namedata = data.match(/(?<=alt=")\S*(?="\/)/)[0];
