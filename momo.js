@@ -56,6 +56,7 @@
                  console.log(`\n【debug】 这是你第 ${num}`);
              }
              UA = require('./USER_AGENTS').USER_AGENT;
+             UA = require('./USER_AGENTS').USER_AGENT;
              await $.wait(2 * 1000);
              if (debug) {
                 console.log(`\n【debug】 这是你的UA数据:\n ${UA}\n`);
