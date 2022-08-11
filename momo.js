@@ -11,11 +11,12 @@
  const notify = $.isNode() ? require('./sendNotify') : '';
  const Notify = 1; //0为关闭通知，1为打开通知,默认为1
  const debug = 1; //0为关闭调试，1为打开调试,默认为0
- const UA = $.isNode() ? require('./USER_AGENTS') : '';
+
  
  let MMSL = ($.isNode() ? process.env.MMSL : $.getdata('MMSL')) || "";
  let MMSLArr = [];
  let msg = '';
+ let UA = '';
 
  
  
@@ -54,7 +55,7 @@
              if (debug) {
                  console.log(`\n【debug】 这是你第 ${num}`);
              }
-            //  await ua();
+             UA = ua();
              await $.wait(2 * 1000);
              if (debug) {
                 console.log(`\n【debug】 这是你的UA数据:\n ${UA}\n`);
@@ -114,10 +115,11 @@
  //随机UA
  async function ua(){
     if ($.isNode()) {
-        var UA = require('./USER_AGENTS').USER_AGENT;
+        var USER_AGENT = require('./USER_AGENTS').USER_AGENT;
         if (debug) {
-            console.log(`\n【debug】 这是你的UA1数据:\n ${UA}\n`);
+            console.log(`\n【debug】 这是你的UA1数据:\n ${USER_AGENT}\n`);
          }
+        return USER_AGENT;
     }
  }
 
@@ -148,7 +150,7 @@
 			url: MMSL,
             headers: {
                 'Host': 'www.maimemo.com',
-                // 'user-agent': UA
+                'user-agent': UA
               }
 		}
 		$.get(url, async (err, resp, data) => {
