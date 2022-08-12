@@ -178,7 +178,7 @@
 /**
  * 请求接口
  */
- async function getthisIP() {
+ async function getthisIP(timeout = 3 * 1000) {
     return new Promise((resolve) => {
 		let url = {
 			url: 'https://api.ipify.org/?format=json',
