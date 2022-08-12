@@ -83,8 +83,9 @@
  
          await wyy();
          await $.wait(2 * 1000);
-         
- 
+         await getthisIP();
+         await $.wait(2 * 1000);
+
  
          $.log(`\n=================== 共找到 ${MMSLArr.length} 个账号 ===================`)
  
@@ -170,9 +171,36 @@
  * @param {number} min 最小值（包含）
  * @param {number} max 最大值（不包含）
  */
-function randomNumber(min = 0, max = 100) {
+ function randomNumber(min = 0, max = 100) {
   return Math.min(Math.floor(min + Math.random() * (max - min)), max);
-}
+ }
+
+/**
+ * 请求接口
+ */
+ async function getthisIP() {
+    return new Promise((resolve) => {
+		let url = {
+			url: 'https://api.ipify.org/?format=json',
+		}
+		$.get(url, async (err, resp, data) => {
+			try {
+				data = JSON.parse(data);
+                // console.log(data);
+                if (debug) {
+                    console.log(`\n【debug】 这是你的data数据:\n ${data}\n`);
+                 }
+                let _ip = data.ip;
+                console.log(`本次请求的ip为：${_ip}`);
+                msg += `\n 本次请求的ip为：${_ip}`
+			} catch (e) {
+				$.logErr(e, resp);
+			} finally {
+				resolve()
+			}
+		}, timeout)
+	})
+ }
 
  //每日网抑云
  function wyy(timeout = 3 * 1000) {
