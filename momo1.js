@@ -70,7 +70,7 @@
          await $.wait(2 * 1000);
 
  
-         $.log(`\n=================== 共找到 ${MMSLArr.length} 个账号 ===================`)
+         $.log(`\n=================== 共找到 ${MMSL1Arr.length} 个账号 ===================`)
  
          if (debug) {
              console.log(`【debug】 这是你的账号数组:\n ${MMSL1Arr}`);
