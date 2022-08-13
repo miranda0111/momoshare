@@ -43,8 +43,8 @@
     "Mozilla/5.0 (iPad; CPU OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Safari/604.1",
   ]
  
- let MMSL = ($.isNode() ? process.env.MMSL : $.getdata('MMSL')) || "";
- let MMSLArr = [];
+ let MMSL1 = ($.isNode() ? process.env.MMSL1 : $.getdata('MMSL1')) || "";
+ let MMSL1Arr = [];
  let msg = '';
  let UA = '';
 
@@ -73,16 +73,16 @@
          $.log(`\n=================== 共找到 ${MMSLArr.length} 个账号 ===================`)
  
          if (debug) {
-             console.log(`【debug】 这是你的账号数组:\n ${MMSLArr}`);
+             console.log(`【debug】 这是你的账号数组:\n ${MMSL1Arr}`);
          }      
  
-         for (let index = 0; index < MMSLArr.length; index++) {
+         for (let index = 0; index < MMSL1Arr.length; index++) {
  
  
              let num = index + 1
              $.log(`\n========= 开始【第 ${num} 个账号】=========\n`)
              msg += `\n【第 ${num} 个账号】`
-             MMSL = MMSLArr[index];   
+             MMSL1 = MMSL1Arr[index];   
              if (debug) {
                  console.log(`\n【debug】 这是你第 ${num}`);
              }
@@ -112,20 +112,20 @@
  //#region 固定代码
  // ============================================变量检查============================================ \\
  async function Envs() {
-     if (MMSL) {
-         if (MMSL.indexOf("@") != -1) {
-             MMSL.split("@").forEach((item) => {
-                 MMSLArr.push(item);
+     if (MMSL1) {
+         if (MMSL1.indexOf("@") != -1) {
+             MMSL1.split("@").forEach((item) => {
+                 MMSL1Arr.push(item);
              });
-         } else if (MMSL.indexOf("\n") != -1) {
-            MMSL.split("\n").forEach((item) => {
-                 MMSLArr.push(item);
+         } else if (MMSL1.indexOf("\n") != -1) {
+            MMSL1.split("\n").forEach((item) => {
+                 MMSL1Arr.push(item);
              });
          } else {
-             MMSLArr.push(MMSL);
+             MMSL1Arr.push(MMSL1);
          }
      } else {
-         $.log(`\n【${$.name}】：未填写变量 MMSL`)
+         $.log(`\n【${$.name}】：未填写变量 MMSL1`)
          return;
      }
  
@@ -208,7 +208,7 @@
  async function addLike(timeout = 3 * 1000) {
 	return new Promise((resolve) => {
 		let url = {
-			url: MMSL,
+			url: MMSL1,
             headers: {
                 'Host': 'www.maimemo.com',
                 'user-agent': UA
