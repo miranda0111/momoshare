@@ -4,7 +4,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '1,30 */2 * * *'
+    - cron: '3,55 */2 * * *'
   workflow_dispatch:
   watch:
     types: started
@@ -38,7 +38,6 @@ jobs:
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
           QYWX_KEY: ${{ secrets.QYWX_KEY }}
           QYWX_AM: ${{ secrets.QYWX_AM }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
