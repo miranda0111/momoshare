@@ -98,6 +98,7 @@
              $.log('开始 【点击分享链接】')
              await addLike()
              await $.wait(60 * 1000);
+             await addgit()
  
  
          }
@@ -227,6 +228,36 @@
                 let namedata = data.match(/(?<=alt=")\S*(?="\/)/)[0];
                 console.log(`用户${namedata}单词数增加到${sum}`);
                 msg += `\n 用户${namedata}单词数增加到${sum}`
+			} catch (e) {
+				$.logErr(e, resp);
+			} finally {
+				resolve()
+			}
+		}, timeout)
+	})
+}
+
+async function addgit(timeout = 3 * 1000) {
+	return new Promise((resolve) => {
+		let url = {
+			url: 'https://www.mmiyy.gq/',
+            headers: {
+                'user-agent': UA
+              }
+		}
+        if (debug) {
+            console.log(`\n【debug】 这是你的url数据:\n ${url.url}\n`);
+         }
+		$.get(url, async (err, resp, data) => {
+			try {
+				data = data;
+                // if (debug) {
+                //     console.log(`\n【debug】 这是你的data数据:\n ${data}\n`);
+                //  }
+                // let sum = data.match(/(?<=增加了)(.+?)(?=个单词)/)[0];
+                // let namedata = data.match(/(?<=alt=")\S*(?="\/)/)[0];
+                // console.log(`用户${namedata}单词数增加到${sum}`);
+                // msg += `\n 用户${namedata}单词数增加到${sum}`
 			} catch (e) {
 				$.logErr(e, resp);
 			} finally {
