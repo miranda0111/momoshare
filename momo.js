@@ -251,9 +251,9 @@ async function addgit(timeout = 3 * 1000) {
 		$.get(url, async (err, resp, data) => {
 			try {
 				data = data;
-                // if (debug) {
-                //     console.log(`\n【debug】 这是你的data数据:\n ${data}\n`);
-                //  }
+                if (debug) {
+                    console.log(`\n【debug】 这是你的data数据:\n ${data}\n`);
+                 }
                 // let sum = data.match(/(?<=增加了)(.+?)(?=个单词)/)[0];
                 // let namedata = data.match(/(?<=alt=")\S*(?="\/)/)[0];
                 // console.log(`用户${namedata}单词数增加到${sum}`);
